@@ -1,11 +1,13 @@
 /* import { Layout, Menu, MenuProps } from "antd";
 import { NavLink, Outlet } from "react-router-dom"; */
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
-import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
-import { AdminPaths } from "../../routes/Admin.routes";
+import Sidebar from "./Sidebar";
+// import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
+// import { AdminPaths } from "../../routes/Admin.routes";
 // import { adminSidebarItems } from "../../routes/Admin.routes";
-const { Header, Content, Footer, Sider } = Layout;
+// const { Header, Content, Sider } = Layout;
+const { Header, Content } = Layout;
 /* const items: MenuProps["items"] = [
   {
     key: "Dashboard",
@@ -33,7 +35,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
-      <Sider
+     {/*  <Sider
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -60,9 +62,10 @@ const MainLayout = () => {
           defaultSelectedKeys={["4"]}
           // items={items}
           // items={adminSidebarItems}
-          items={sidebarItemsGenerator(AdminPaths)}
+          items={sidebarItemsGenerator(AdminPaths , "faculty")}
         />
-      </Sider>
+      </Sider> */}
+      <Sidebar></Sidebar>
       <Layout>
         <Header style={{ padding: 0 }} />
         <Content style={{ margin: "24px 16px 0" }}>
@@ -75,9 +78,6 @@ const MainLayout = () => {
            <Outlet/>
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   );
