@@ -34,7 +34,7 @@ const AdminPaths2 = [
     }
 ]
 
-const result = AdminPaths2.reduce((acc, item) => {
+/* const result = AdminPaths2.reduce((acc, item) => {
     if(item.path && item.element){
         acc.push({
             path : item.path,
@@ -51,5 +51,27 @@ const result = AdminPaths2.reduce((acc, item) => {
     }
 
     return acc;
+  }, []); */
+
+  const result = AdminPaths2.reduce((acc , item)=> {
+    if(item.path && item.element){
+        acc.push({
+            key : item.name,
+            label : item.path
+        })
+    }
+    if(item.children){
+        acc.push({
+            key : item.name,
+            label : item.name,
+            children : item.children.map(child => ({
+                key : child.name,
+                label : child.path
+            }))
+        })
+    }
+
+    return acc;
   }, []);
-  console.log(result);
+  console.log(JSON.stringify(result));
+
