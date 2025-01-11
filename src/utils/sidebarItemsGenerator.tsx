@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { TSidebarItems, TSidebarProps } from "../types";
 
-export const sidebarItemsGenerator = (items) =>{
-    const sidebarItems = items.reducer((acc , item) => {
+export const sidebarItemsGenerator = (items : TSidebarProps[]) =>{
+    const sidebarItems = items.reduce((acc : TSidebarItems[]  , item) => {
         if(item.path && item.element){
             acc.push({
                 key : item.name,

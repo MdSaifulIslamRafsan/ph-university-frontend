@@ -1,20 +1,20 @@
-import {  ReactNode } from "react";
+// import {  ReactNode } from "react";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 /* type TAdminRoute = {
   path: string;
   element: ReactNode;
 };
  */
-type TAdminSidebarItem = {
+/* type TAdminSidebarItem = {
   key: string;
   label: ReactNode;
   children?: TAdminSidebarItem[];
-};
+}; */
 
 export const AdminPaths = [
   {
@@ -45,7 +45,7 @@ export const AdminPaths = [
   },
 ];
 
-export const adminSidebarItems = AdminPaths.reduce((acc: TAdminSidebarItem[], item) => {
+/* export const adminSidebarItems = AdminPaths.reduce((acc: TAdminSidebarItem[], item) => {
     if (item.path && item.element) {
       acc.push({
         key: item.name,
@@ -67,7 +67,7 @@ export const adminSidebarItems = AdminPaths.reduce((acc: TAdminSidebarItem[], it
   },
   []
 );
-
+ */
 // programetical way
 /* export const adminRoutes = AdminPaths.reduce((acc: TAdminRoute[], item) => {
   if (item.path && item.element) {
