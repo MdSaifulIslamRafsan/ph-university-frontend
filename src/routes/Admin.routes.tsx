@@ -5,11 +5,11 @@ import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
 import { NavLink } from "react-router-dom";
 
-type TAdminRoute = {
+/* type TAdminRoute = {
   path: string;
   element: ReactNode;
 };
-
+ */
 type TAdminSidebarItem = {
   key: string;
   label: ReactNode;
@@ -69,7 +69,7 @@ export const adminSidebarItems = AdminPaths.reduce((acc: TAdminSidebarItem[], it
 );
 
 // programetical way
-export const adminRoutes = AdminPaths.reduce((acc: TAdminRoute[], item) => {
+/* export const adminRoutes = AdminPaths.reduce((acc: TAdminRoute[], item) => {
   if (item.path && item.element) {
     acc.push({
       path: item.path,
@@ -87,7 +87,7 @@ export const adminRoutes = AdminPaths.reduce((acc: TAdminRoute[], item) => {
   }
 
   return acc;
-}, []);
+}, []); */
 
 // hardcoded routes
 /* export const adminRoutes = [
