@@ -23,6 +23,10 @@ export const AdminPaths = [
     element: <AdminDashboard></AdminDashboard>,
   },
   {
+    index: true,
+    element: <AdminDashboard></AdminDashboard>,
+  },
+  {
     name: "Users Management",
     children: [
       {

@@ -15,6 +15,12 @@ import { TRoutes, TSidebarProps } from "../types";
 
 export const routesGenerator = (items : TSidebarProps[]) => {
   const routes = items.reduce((acc : TRoutes[], item) => {
+    if(item.path){
+      acc.push({
+        index: true,
+        element: item.element,
+      })
+    }
     if (item.path && item.element) {
       acc.push({
         path: item.path,

@@ -8,7 +8,8 @@ export type TSidebarProps = {
 }
 
 export type TRoutes = {
-    path: string;
+    path?: string;
+    index?: boolean;
     element : ReactNode
 }
 
