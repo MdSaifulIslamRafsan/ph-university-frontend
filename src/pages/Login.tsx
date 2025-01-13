@@ -19,6 +19,7 @@ const Login = () => {
     console.log("error", error);
     const onsubmit : SubmitHandler<TInputs> = async(data) => {
        const res = await login(data).unwrap();
+       console.log("res", res);
        const token = res.data.accessToken;
        const userData = verifyToken(token)
        dispatch(setUser({user: userData , token}))
