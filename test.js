@@ -73,5 +73,26 @@ const AdminPaths2 = [
 
     return acc;
   }, []);
-  console.log(JSON.stringify(result));
+//   console.log(JSON.stringify(result));
 
+//  Serializable objects
+const obj = {
+    name: "John Doe",
+    age: 30,
+}
+
+const serializedObj = JSON.stringify(obj);
+console.log(serializedObj);
+
+//  non-serializable objects
+
+const nonSerializableObj = {
+    name: "John Doe",
+    age: 30,
+    sayHello: function() {
+        console.log("Hello");
+    }
+}
+const nonSerializable = JSON.stringify(nonSerializableObj);
+
+console.log(nonSerializable); 
