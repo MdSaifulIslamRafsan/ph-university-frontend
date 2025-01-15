@@ -18,3 +18,9 @@ export type TSidebarItems = {
     label : ReactNode;
     children?: TSidebarItems[];
 }
+export type TUser = {
+    role: "admin" | "faculty" | "student",
+    id : string,
+    iat : number,
+    exp : number,
+}

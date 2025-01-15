@@ -1,8 +1,11 @@
 /* import { Layout, Menu, MenuProps } from "antd";
 import { NavLink, Outlet } from "react-router-dom"; */
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import { useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
+import { toast } from "sonner";
 // import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 // import { AdminPaths } from "../../routes/Admin.routes";
 // import { adminSidebarItems } from "../../routes/Admin.routes";
@@ -33,6 +36,16 @@ const { Header, Content } = Layout;
   },
 ]; */
 const MainLayout = () => {
+  const dispatch = useAppDispatch();
+
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success("logout successfully")
+
+  }
+
+
   return (
     <Layout style={{ height: "100vh" }}>
      {/*  <Sider
@@ -67,7 +80,9 @@ const MainLayout = () => {
       </Sider> */}
       <Sidebar></Sidebar>
       <Layout>
-        <Header style={{ padding: 0 }} />
+        <Header style={{ padding: 0, display: "flex", alignItems: "center", justifyContent: "end" }}>
+          <Button onClick={handleLogout}>Log Out</Button>
+        </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
