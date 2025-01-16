@@ -3,18 +3,20 @@ import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import { AdminPaths } from "../../routes/Admin.routes";
 import { StudentPaths } from "../../routes/Student.routes";
 import { FacultyPaths } from "../../routes/Faculty.routes";
-import { TSidebarProps } from "../../types";
-const userRole = { Admin: "admin", Faculty: "faculty", Student: "student" };
+import { TSidebarProps, TUserRoles } from "../../types";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+// const userRole = { Admin: "admin", Faculty: "faculty", Student: "student" };
 const { Sider } = Layout;
 
 const Sidebar = () => {
-  const role = "student";
+  const role = useAppSelector(selectCurrentUser)?.role;
   let sidebarItems;
-  if (userRole.Admin === role) {
+  if ("admin" === role) {
     sidebarItems = AdminPaths;
-  } else if (userRole.Faculty === role) {
+  } else if ("faculty" === role) {
     sidebarItems = FacultyPaths;
-  } else if (userRole.Student === role) {
+  } else if ("student" === role) {
     sidebarItems = StudentPaths;
   }
 
@@ -44,7 +46,7 @@ const Sidebar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={sidebarItemsGenerator(sidebarItems as TSidebarProps[], role)}
+        items={sidebarItemsGenerator(sidebarItems as TSidebarProps[], role as TUserRoles)}
       />
     </Sider>
   );

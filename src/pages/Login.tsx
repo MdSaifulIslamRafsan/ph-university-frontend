@@ -24,16 +24,17 @@ const Login = () => {
     const {register , handleSubmit } = useForm<TInputs>();
     const [login ]  = useLoginMutation();
     const onsubmit : SubmitHandler<TInputs> = async(data ) => {
+       const toastId = toast.loading("logging in...");
       try {
         const res = await login(data).unwrap();
         console.log("res", res);
         const token = res.data.accessToken;
         const userData = verifyToken(token) as TUser
         dispatch(setUser({user: userData , token}))
-        toast.success(`${userData.role} log in successfully`)
+        toast.success(`${userData.role} log in successfully`, {id : toastId , duration: 2000})
         navigate(`/${userData.role}/dashboard`);
       } catch (error : unknown) {
-        toast.error(`something went wrong ${(error as TErrorMessage).message}`)
+        toast.error(`something went wrong ${(error as TErrorMessage).message}`, {id : toastId , duration: 2000})
       }
        
     }

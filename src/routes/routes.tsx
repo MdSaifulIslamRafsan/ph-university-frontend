@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import { AdminPaths } from "./Admin.routes";
 import { routesGenerator } from "../utils/routesGenerator";
 import { FacultyPaths } from "./Faculty.routes";
 import { StudentPaths } from "./Student.routes";
+import { AdminPaths } from "./Admin.routes";
 
 export const router = createBrowserRouter([
   {

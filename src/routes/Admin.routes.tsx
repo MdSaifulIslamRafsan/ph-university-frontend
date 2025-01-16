@@ -1,4 +1,5 @@
 // import {  ReactNode } from "react";
+import AcademicSemester from "../pages/admin/AcademicMenagement/AcademicSemester";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
@@ -23,6 +24,7 @@ export const AdminPaths = [
     element: <AdminDashboard></AdminDashboard>,
   },
   {
+    name: "Dashboard",
     index: true,
     element: <AdminDashboard></AdminDashboard>,
   },
@@ -47,6 +49,16 @@ export const AdminPaths = [
       
     ],
   },
+  {
+    name: "Academic Management",
+    children : [
+      {
+        name : "Academic Semester",
+        path : "academic-semester",
+        element : <AcademicSemester></AcademicSemester>
+      }
+    ]
+  }
 ];
 
 /* export const adminSidebarItems = AdminPaths.reduce((acc: TAdminSidebarItem[], item) => {
