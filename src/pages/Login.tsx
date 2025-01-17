@@ -7,6 +7,7 @@ import { verifyToken } from "../utils/verifyToken";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { TUser } from "../types";
+import PhForm from "../components/form/PhForm";
 
 type TInputs  = {
     id : string;
@@ -21,9 +22,10 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const {register , handleSubmit } = useForm<TInputs>();
+    const {register  } = useForm<TInputs>();
     const [login ]  = useLoginMutation();
     const onsubmit : SubmitHandler<TInputs> = async(data ) => {
+      console.log(data);
        const toastId = toast.loading("logging in...");
       try {
         const res = await login(data).unwrap();
@@ -39,7 +41,7 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <PhForm onSubmit={onsubmit}>
            <div className="">
                 <label htmlFor="id">Id :-</label>
                 <input type="text" id="id" {...register('id')} name="id" required />
@@ -49,7 +51,7 @@ const Login = () => {
              <input type="password" {...register('password')} id="password" name="password" required />
            </div>
            <Button htmlType="submit">Submit</Button>
-        </form>
+        </PhForm>
     );
 };
 
