@@ -1,5 +1,5 @@
 import { Button, Row } from "antd";
-import { SubmitHandler } from "react-hook-form";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/features/auth/authSlice";
@@ -10,10 +10,10 @@ import { TUser } from "../types";
 import PhForm from "../components/form/PhForm";
 import PhInput from "../components/form/PhInput";
 
-type TInputs = {
+/* type TInputs = {
   id: string;
   password: string;
-};
+}; */
 type TErrorMessage = {
   message: string;
 };
@@ -23,9 +23,13 @@ const Login = () => {
   const dispatch = useAppDispatch();
 
   // const {register  } = useForm<TInputs>();
+  const defaultValues = {
+    id: "A-0001",
+    password: "admin123",
+  };
 
   const [login] = useLoginMutation();
-  const onSubmit: SubmitHandler<TInputs> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log(data);
     const toastId = toast.loading("logging in...");
     try {
@@ -48,7 +52,7 @@ const Login = () => {
 
   return (
     <Row align="middle" justify="center" style={{height : "100vh"}}>
-      <PhForm onSubmit={onSubmit}>
+      <PhForm onSubmit={onSubmit} defaultValues={defaultValues}>
         <div className="">
           {/* <label htmlFor="id">Id :-</label> */}
           <PhInput label={"Id"} type={"text"} fieldName={"id"}></PhInput>
