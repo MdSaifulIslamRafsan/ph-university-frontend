@@ -5,6 +5,7 @@ import {
   useForm,
 } from "react-hook-form";
 import { ReactNode } from "react";
+import { Form } from "antd";
 type TDefaultValues = {
   defaultValues?: Record<string, any>;
 };
@@ -23,7 +24,7 @@ const PhForm = ({ onSubmit, children, defaultValues }: TPhForm) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+      <Form layout="vertical" onFinish={methods.handleSubmit(onSubmit)}>{children}</Form>
     </FormProvider>
   );
 };

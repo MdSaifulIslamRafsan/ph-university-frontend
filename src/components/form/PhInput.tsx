@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import { Controller } from "react-hook-form";
 
 type TPhInput = {
@@ -15,17 +15,19 @@ const PhInput = ({
 
   return (
     <div style={{ marginBottom : "20px" }}>
-      {label ? <label htmlFor={fieldName}>{label} :-</label> : ""}
+      {/* {label ? <label htmlFor={fieldName}>{label} :-</label> : ""} */}
       <Controller
         name={fieldName}
         render={({ field }) => (
-          <Input
+        <Form.Item label={label}>
+              <Input
             {...field}
             type={type}
             id={fieldName}
             name={fieldName}
             required
           />
+        </Form.Item>
         )}
       />
     </div>
