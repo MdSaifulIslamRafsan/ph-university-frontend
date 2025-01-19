@@ -2,20 +2,8 @@ import { FieldValues } from "react-hook-form";
 import PhForm from "../../../components/form/PhForm";
 import { Button, Col, Flex } from "antd";
 import PhSelect from "../../../components/form/PhSelect";
-const nameOptions = [
-  {
-    value: "01",
-    label: "Autumn",
-  },
-  {
-    value: "02",
-    label: "Summer",
-  },
-  {
-    value: "03",
-    label: "Fall",
-  },
-];
+import { semesterOptions } from "../../../constants/semester";
+
 const currentYear = new Date().getFullYear();
 /* const yearOptions = Array.from({ length: 6 }, (_, i) => ({
   value: `${currentYear + i}`,
@@ -30,7 +18,7 @@ const yearOptions = [0, 1, 2, 3, 4]?.map(i => ({
 const CreateAcademicSemester = () => {
   const onsubmit = (data: FieldValues) => {
     // const name = nameOptions.find((item) => item.value === data.name)
-    const name = nameOptions[parseInt(data?.name) - 1].label;
+    const name = semesterOptions[parseInt(data?.name) - 1].label;
 
     const semesterData = {
       // name: name?.label,
@@ -45,7 +33,7 @@ const CreateAcademicSemester = () => {
     <Flex style={{ height: "200vh" }} align="center" justify="center">
       <Col span={8}>
         <PhForm onSubmit={onsubmit}>
-          <PhSelect label={"Name"} name="name" options={nameOptions}></PhSelect>
+          <PhSelect label={"Name"} name="name" options={semesterOptions}></PhSelect>
           <PhSelect label={"Year"} name="year" options={yearOptions}></PhSelect>
           <PhSelect
             label={"Start Month"}
