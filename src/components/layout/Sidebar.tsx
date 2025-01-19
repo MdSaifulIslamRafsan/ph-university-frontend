@@ -22,6 +22,13 @@ const Sidebar = () => {
 
   return (
     <Sider
+      style={{
+        height: "100vh",
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        left: 0,
+      }}
       breakpoint="lg"
       collapsedWidth="0"
       onBreakpoint={(broken) => {
@@ -46,7 +53,10 @@ const Sidebar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={sidebarItemsGenerator(sidebarItems as TSidebarProps[], role as TUserRoles)}
+        items={sidebarItemsGenerator(
+          sidebarItems as TSidebarProps[],
+          role as TUserRoles
+        )}
       />
     </Sider>
   );

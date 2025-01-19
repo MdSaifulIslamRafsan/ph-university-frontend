@@ -16,6 +16,17 @@ const nameOptions = [
     label: "Fall",
   },
 ];
+const currentYear = new Date().getFullYear();
+/* const yearOptions = Array.from({ length: 6 }, (_, i) => ({
+  value: `${currentYear + i}`,
+  label: `${currentYear + i}`,
+})); */
+
+const yearOptions = [0, 1, 2, 3, 4]?.map(i => ({
+  value: `${currentYear + i}`,
+  label: `${currentYear + i}`,
+}))
+
 const CreateAcademicSemester = () => {
   const onsubmit = (data: FieldValues) => {
     // const name = nameOptions.find((item) => item.value === data.name)
@@ -25,15 +36,27 @@ const CreateAcademicSemester = () => {
       // name: name?.label,
       name,
       code: data.name,
+      year : data.year
     };
     console.log(semesterData);
   };
 
   return (
-    <Flex align="center" justify="center">
-      <Col span={6}>
+    <Flex style={{ height: "200vh" }} align="center" justify="center">
+      <Col span={8}>
         <PhForm onSubmit={onsubmit}>
           <PhSelect label={"Name"} name="name" options={nameOptions}></PhSelect>
+          <PhSelect label={"Year"} name="year" options={yearOptions}></PhSelect>
+          <PhSelect
+            label={"Start Month"}
+            name="startMonth"
+            options={nameOptions}
+          ></PhSelect>
+          <PhSelect
+            label={"End Month"}
+            name="endMonth"
+            options={nameOptions}
+          ></PhSelect>
           <Button htmlType="submit">Submit</Button>
         </PhForm>
       </Col>
