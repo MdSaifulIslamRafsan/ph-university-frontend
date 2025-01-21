@@ -6,18 +6,22 @@ import {
 } from "react-hook-form";
 import { ReactNode } from "react";
 import { Form } from "antd";
-type TDefaultValues = {
+type TFormConfig = {
   defaultValues?: Record<string, any>;
+  resolver?: any;
 };
 type TPhForm = {
   onSubmit: SubmitHandler<FieldValues>;
   children: ReactNode;
-} & TDefaultValues;
+} & TFormConfig;
 
-const PhForm = ({ onSubmit, children, defaultValues }: TPhForm) => {
-  const formConfig: TDefaultValues = {};
+const PhForm = ({ onSubmit, children, defaultValues , resolver }: TPhForm) => {
+  const formConfig: TFormConfig = {};
   if (defaultValues) {
     formConfig["defaultValues"] = defaultValues;
+  }
+  if (resolver) {
+    formConfig["resolver"] = resolver;
   }
 
   const methods = useForm(formConfig);
