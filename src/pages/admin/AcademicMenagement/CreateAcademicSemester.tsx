@@ -3,6 +3,7 @@ import PhForm from "../../../components/form/PhForm";
 import { Button, Col, Flex } from "antd";
 import PhSelect from "../../../components/form/PhSelect";
 import { semesterOptions } from "../../../constants/semester";
+import { monthOptions } from "../../../constants/global";
 
 const currentYear = new Date().getFullYear();
 /* const yearOptions = Array.from({ length: 6 }, (_, i) => ({
@@ -24,13 +25,15 @@ const CreateAcademicSemester = () => {
       // name: name?.label,
       name,
       code: data.name,
-      year : data.year
+      year : data.year,
+      startMonth: data.startMonth,
+      endMonth: data.endMonth
     };
     console.log(semesterData);
   };
 
   return (
-    <Flex style={{ height: "200vh" }} align="center" justify="center">
+    <Flex align="center" justify="center">
       <Col span={8}>
         <PhForm onSubmit={onsubmit}>
           <PhSelect label={"Name"} name="name" options={semesterOptions}></PhSelect>
@@ -38,12 +41,12 @@ const CreateAcademicSemester = () => {
           <PhSelect
             label={"Start Month"}
             name="startMonth"
-            options={nameOptions}
+            options={monthOptions}
           ></PhSelect>
           <PhSelect
             label={"End Month"}
             name="endMonth"
-            options={nameOptions}
+            options={monthOptions}
           ></PhSelect>
           <Button htmlType="submit">Submit</Button>
         </PhForm>
