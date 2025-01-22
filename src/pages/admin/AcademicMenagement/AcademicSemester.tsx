@@ -1,4 +1,4 @@
-import { useGetAcademicSemesterQuery } from "../../../redux/features/academicSemester/academicSemesterApi";
+import { useGetAcademicSemesterQuery } from "../../../redux/features/admin/academicManagementApi";
 
 const AcademicSemester = () => {
     const {data} = useGetAcademicSemesterQuery(undefined);
