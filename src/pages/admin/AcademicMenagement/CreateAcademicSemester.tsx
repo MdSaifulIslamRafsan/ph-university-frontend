@@ -9,7 +9,9 @@ import { academicSemesterSchema } from "../../../Schemas/academicManagement.sche
 import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManagementApi";
 import { toast } from "sonner";
 import { TResponse } from "../../../types/global";
-
+type TError = {
+  message: string;
+}
 
 const currentYear = new Date().getFullYear();
 /* const yearOptions = Array.from({ length: 6 }, (_, i) => ({
@@ -49,7 +51,7 @@ const CreateAcademicSemester = () => {
 
    }
     catch(error : unknown){
-      toast.error("something went wrong");
+      toast.error( (error as TError).message || "something went wrong");
     }
 
   };
